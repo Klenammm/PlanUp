@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   View,
@@ -7,9 +8,10 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { Feather } from "@expo/vector-icons"; // Assuming you have @expo/vector-icons installed
+import { Feather } from "@expo/vector-icons";
 
-export default function ProjectScreen() {
+// ✅ navigation added to props
+export default function ProjectScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Header Section */}
@@ -41,11 +43,9 @@ export default function ProjectScreen() {
       </View>
 
       {/* Folder Image (Placeholder) */}
-      {/* In a real app, you might use a local asset or an SVG component */}
       <View style={styles.folderImageContainer}>
-        {/* Placeholder for the folder image. You could replace this with an actual image or SVG. */}
         <Image
-          source={require("../assets/project.png")} // Placeholder image
+          source={require("../../assets/project.png")}
           style={styles.folderImage}
           onError={(e) =>
             console.log("Image failed to load:", e.nativeEvent.error)
@@ -59,8 +59,11 @@ export default function ProjectScreen() {
         To get started, create a project.
       </Text>
 
-      {/* Create Project Button */}
-      <TouchableOpacity style={styles.createProjectButton}>
+      {/* ✅ Create Project Button with Navigation */}
+      <TouchableOpacity
+        style={styles.createProjectButton}
+        onPress={() => navigation.navigate("Project")} // 👈 Change this to your actual screen name
+      >
         <Text style={styles.createProjectButtonText}>Create project</Text>
       </TouchableOpacity>
     </View>
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 50, // Adjust for status bar
+    paddingTop: 50,
     paddingHorizontal: 20,
   },
   header: {
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#9370DB", // Purple color
+    backgroundColor: "#9370DB",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginBottom: 50, // Increased margin to push content down
+    marginBottom: 50,
   },
   searchIcon: {
     marginRight: 10,
@@ -118,11 +121,11 @@ const styles = StyleSheet.create({
   },
   folderImageContainer: {
     alignItems: "center",
-    marginBottom: 5, // Increased margin
+    marginBottom: 5,
   },
   folderImage: {
-    width: 200, // Adjust as needed
-    height: 150, // Adjust as needed
+    width: 200,
+    height: 150,
     resizeMode: "contain",
   },
   welcomeText: {
@@ -139,11 +142,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   createProjectButton: {
-    backgroundColor: "#9370DB", // Purple color for the button
+    backgroundColor: "#9370DB",
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
-    alignSelf: "center", // Center the button horizontally
+    alignSelf: "center",
   },
   createProjectButtonText: {
     color: "#fff",
