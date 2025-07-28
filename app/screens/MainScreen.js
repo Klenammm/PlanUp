@@ -27,7 +27,7 @@ export default function MainScreen() {
           <View style={styles.profileIcon}>
             <Text style={styles.profileIconText}>K</Text>
           </View>
-          <TouchableOpacity style={styles.createWorkItemButton}>
+          <TouchableOpacity style={styles.createWorkItemButton} onPress={() => router.push("/screens/Item")}>
             <Text style={styles.createWorkItemText}>Create work item</Text>
           </TouchableOpacity>
         </View>
@@ -62,7 +62,7 @@ export default function MainScreen() {
             <Text style={styles.personalizeDescription}>
               Add your most important stuff here, for fast access.
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push("/screens/Summary")}>
               <Text style={styles.addItemsText}>Add items</Text>
             </TouchableOpacity>
           </View>
@@ -90,7 +90,7 @@ export default function MainScreen() {
           <AntDesign name="pluscircleo" size={22} color="#888" />
           <Text style={styles.navText}>AllWork</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/screens/DashboardScreen")}>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/screens/Dashboard")}>
           <Feather name="grid" size={22} color="#888" />
           <Text style={styles.navText}>Dashboard</Text>
         </TouchableOpacity>

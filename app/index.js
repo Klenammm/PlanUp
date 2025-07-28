@@ -1,5 +1,4 @@
-// app/index.jsx
-import { View, ImageBackground, StyleSheet, StatusBar } from 'react-native';
+import { ImageBackground, StyleSheet, StatusBar } from 'react-native';
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 
@@ -8,15 +7,14 @@ export default function IndexScreen() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.replace('/HomeScreen'); // or your main screen
-    }, 3000); // 3 seconds splash
-
+      router.replace('/HomeScreen');
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <ImageBackground
-      source={require('../assets/splash.png')} // Move your image here
+      source={require('../assets/planup.png')} // Use your actual path
       style={styles.container}
       resizeMode="cover"
     >
@@ -28,5 +26,8 @@ export default function IndexScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });
+

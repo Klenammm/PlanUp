@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   View,
@@ -9,13 +8,18 @@ import {
   Image,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
-// ✅ navigation added to props
-export default function ProjectScreen({ navigation }) {
+export default function ProjectScreen() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
-      {/* Header Section */}
+      {/* Header with Back Arrow */}
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.back()}>
+          <Feather name="arrow-left" size={28} color="#333" />
+        </TouchableOpacity>
         <View style={styles.profileIcon}>
           <Text style={styles.profileIconText}>K</Text>
         </View>
@@ -42,7 +46,7 @@ export default function ProjectScreen({ navigation }) {
         />
       </View>
 
-      {/* Folder Image (Placeholder) */}
+      {/* Folder Image */}
       <View style={styles.folderImageContainer}>
         <Image
           source={require("../../assets/project.png")}
@@ -59,10 +63,10 @@ export default function ProjectScreen({ navigation }) {
         To get started, create a project.
       </Text>
 
-      {/* ✅ Create Project Button with Navigation */}
+      {/* Create Project Button */}
       <TouchableOpacity
         style={styles.createProjectButton}
-        onPress={() => navigation.navigate("Project")} // 👈 Change this to your actual screen name
+        onPress={() => router.push("/screens/Project")}
       >
         <Text style={styles.createProjectButtonText}>Create project</Text>
       </TouchableOpacity>
@@ -154,3 +158,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
